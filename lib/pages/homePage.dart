@@ -1,11 +1,9 @@
+import 'package:despesas_pessoais/components/transaction_form.dart';
 import 'package:despesas_pessoais/components/transaction_list.dart';
 import 'package:despesas_pessoais/model/transaction.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
-  final titleController = TextEditingController();
-  final valueController = TextEditingController();
-
   final _transaction = [
     Transaction(
       id: 't1',
@@ -37,38 +35,7 @@ class HomePage extends StatelessWidget {
             ),
           ),
           TransactionList(_transaction),
-          Padding(
-            padding: EdgeInsets.all(20),
-            child: Column(
-              children: <Widget>[
-                TextField(
-                  controller: titleController,
-                  decoration: InputDecoration(
-                    labelText: 'Despesa',
-                  ),
-                ),
-                TextField(
-                  controller: valueController,
-                  decoration: InputDecoration(
-                    labelText: 'Valor (R\$)',
-                  ),
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: <Widget>[
-                    FlatButton(
-                      textColor: Colors.purple,
-                      onPressed: () {
-                        print(titleController.text);
-                        print(valueController.text);
-                      },
-                      child: Text('Salvar'),
-                    ),
-                  ],
-                ),
-              ],
-            ),
-          ),
+          TransactionForm(),
           Container(
             child: Text('Versão 1.0'),
           ),
