@@ -1,6 +1,6 @@
+import 'package:despesas_pessoais/components/transaction_list.dart';
 import 'package:despesas_pessoais/model/transaction.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 
 class HomePage extends StatelessWidget {
   final titleController = TextEditingController();
@@ -36,54 +36,7 @@ class HomePage extends StatelessWidget {
               elevation: 5,
             ),
           ),
-          Column(
-            children: _transaction.map((tr) {
-              return Card(
-                child: Row(
-                  children: <Widget>[
-                    Container(
-                      decoration: BoxDecoration(
-                          border: Border.all(
-                        color: Colors.purple,
-                        width: 2,
-                      )),
-                      margin: EdgeInsets.symmetric(
-                        horizontal: 15,
-                        vertical: 10,
-                      ),
-                      padding: EdgeInsets.all(10),
-                      child: Text(
-                        'R\$ ${tr.value.toStringAsFixed(2).replaceFirst(new RegExp(r'\.'), ',')}',
-                        style: TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.purple,
-                        ),
-                      ),
-                    ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: <Widget>[
-                        Text(
-                          tr.title,
-                          style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        Text(
-                          DateFormat('d MMM y').format(tr.date),
-                          style: TextStyle(
-                            color: Colors.grey,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              );
-            }).toList(),
-          ),
+          TransactionList(_transaction),
           Padding(
             padding: EdgeInsets.all(20),
             child: Column(
