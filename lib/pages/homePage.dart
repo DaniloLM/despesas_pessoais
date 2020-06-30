@@ -8,21 +8,32 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(
         title: Text('Despesas Pessoais'),
       ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: <Widget>[
-          Container(
-            width: double.infinity,
-            child: Card(
-              child: Text('Grafico'),
-              elevation: 5,
+      body: SingleChildScrollView(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: <Widget>[
+            Container(
+              width: double.infinity,
+              child: Card(
+                child: Text('Grafico'),
+                elevation: 5,
+              ),
             ),
+            TransactionUser(),
+          ],
+        ),
+      ),
+      bottomSheet: BottomAppBar(
+        color: Colors.white,
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Text('Versão 1.0'),
+            ],
           ),
-          TransactionUser(),
-          Container(
-            child: Text('Versão 1.0'),
-          ),
-        ],
+        ),
       ),
     );
   }

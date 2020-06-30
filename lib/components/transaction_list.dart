@@ -9,53 +9,59 @@ class TransactionList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: transactions.map((tr) {
-        return Card(
-          child: Row(
-            children: <Widget>[
-              Container(
-                decoration: BoxDecoration(
-                    border: Border.all(
-                  color: Colors.purple,
-                  width: 2,
-                )),
-                margin: EdgeInsets.symmetric(
-                  horizontal: 15,
-                  vertical: 10,
-                ),
-                padding: EdgeInsets.all(10),
-                child: Text(
-                  'R\$ ${tr.value.toStringAsFixed(2).replaceFirst(new RegExp(r'\.'), ',')}',
-                  style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.purple,
-                  ),
-                ),
-              ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+    return Container(
+      height: 450,
+      padding: EdgeInsets.only(bottom: 30),
+      child: SingleChildScrollView(
+        child: Column(
+          children: transactions.map((tr) {
+            return Card(
+              child: Row(
                 children: <Widget>[
-                  Text(
-                    tr.title,
-                    style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
+                  Container(
+                    decoration: BoxDecoration(
+                        border: Border.all(
+                      color: Colors.purple,
+                      width: 2,
+                    )),
+                    margin: EdgeInsets.symmetric(
+                      horizontal: 15,
+                      vertical: 10,
+                    ),
+                    padding: EdgeInsets.all(10),
+                    child: Text(
+                      'R\$ ${tr.value.toStringAsFixed(2).replaceFirst(new RegExp(r'\.'), ',')}',
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.purple,
+                      ),
                     ),
                   ),
-                  Text(
-                    DateFormat('d MMM y').format(tr.date),
-                    style: TextStyle(
-                      color: Colors.grey,
-                    ),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      Text(
+                        tr.title,
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      Text(
+                        DateFormat('d MMM y').format(tr.date),
+                        style: TextStyle(
+                          color: Colors.grey,
+                        ),
+                      ),
+                    ],
                   ),
                 ],
               ),
-            ],
-          ),
-        );
-      }).toList(),
+            );
+          }).toList(),
+        ),
+      ),
     );
   }
 }
