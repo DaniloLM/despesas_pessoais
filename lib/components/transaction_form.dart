@@ -7,6 +7,17 @@ class TransactionForm extends StatelessWidget {
 
   TransactionForm(this.onSubmit);
 
+  _submitForm() {
+    final value = double.tryParse(valueController.text);
+    final title = titleController.text;
+
+    if (title.isEmpty || value <= 0) {
+      return;
+    }
+
+    onSubmit(title, value);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -15,12 +26,15 @@ class TransactionForm extends StatelessWidget {
         children: <Widget>[
           TextField(
             controller: titleController,
+            onSubmitted: (value) => _submitForm(),
             decoration: InputDecoration(
               labelText: 'Despesa',
             ),
           ),
           TextField(
             controller: valueController,
+            keyboardType: TextInputType.numberWithOptions(decimal: true),
+            onSubmitted: (value) => _submitForm(),
             decoration: InputDecoration(
               labelText: 'Valor (R\$)',
             ),
@@ -30,10 +44,7 @@ class TransactionForm extends StatelessWidget {
             children: <Widget>[
               FlatButton(
                 textColor: Colors.purple,
-                onPressed: () {
-                  final value = double.tryParse(valueController.text);
-                  onSubmit(titleController.text, value);
-                },
+                onPressed: _submitForm,
                 child: Text('Salvar'),
               ),
             ],
