@@ -1,7 +1,6 @@
 import 'package:despesas_pessoais/pages/homePage.dart';
 import 'package:flutter/material.dart';
 
-
 void main() => runApp(ExpensesApp());
 
 class ExpensesApp extends StatelessWidget {
@@ -9,6 +8,10 @@ class ExpensesApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: HomePage(),
+      theme: ThemeData(
+        primarySwatch: Colors.purple,
+        accentColor: Colors.amberAccent,
+      ),
     );
   }
 }

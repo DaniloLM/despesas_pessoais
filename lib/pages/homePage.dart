@@ -77,7 +77,7 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.add_box),
+        child: Icon(Icons.add),
         onPressed: () => _openTransactionFormModal(context),
       ),
       bottomSheet: BottomAppBar(
