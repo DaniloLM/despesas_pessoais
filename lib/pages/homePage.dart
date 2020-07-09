@@ -10,19 +10,19 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  final _transaction = [
-    Transaction(
-      id: 't1',
-      title: 'Fralda P 20 unidades',
-      value: 19.99,
-      date: DateTime.now(),
-    ),
-    Transaction(
-      id: 't2',
-      title: 'Nubulizador G-tech',
-      value: 210.00,
-      date: DateTime.now(),
-    ),
+  final List<Transaction> _transaction = [
+    // Transaction(
+    //   id: 't1',
+    //   title: 'Fralda P 20 unidades',
+    //   value: 19.99,
+    //   date: DateTime.now(),
+    // ),
+    // Transaction(
+    //   id: 't2',
+    //   title: 'Nubulizador G-tech',
+    //   value: 210.00,
+    //   date: DateTime.now(),
+    // ),
   ];
 
   _openTransactionFormModal(BuildContext context) {
