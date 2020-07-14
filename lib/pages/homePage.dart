@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'dart:math';
 import 'package:despesas_pessoais/model/transaction.dart';
+import 'package:despesas_pessoais/components/chart.dart';
 import 'package:despesas_pessoais/components/transaction_form.dart';
 import 'package:despesas_pessoais/components/transaction_list.dart';
 
@@ -11,19 +12,37 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final List<Transaction> _transaction = [
-    // Transaction(
-    //   id: 't1',
-    //   title: 'Fralda P 20 unidades',
-    //   value: 19.99,
-    //   date: DateTime.now(),
-    // ),
-    // Transaction(
-    //   id: 't2',
-    //   title: 'Nubulizador G-tech',
-    //   value: 210.00,
-    //   date: DateTime.now(),
-    // ),
+    Transaction(
+      id: 't0',
+      title: 'Pagamento 0',
+      value: 19.99,
+      date: DateTime.now().subtract(Duration(days: 8)),
+    ),
+    Transaction(
+      id: 't1',
+      title: 'Fralda P 20 unidades',
+      value: 19.99,
+      date: DateTime.now().subtract(Duration(days: 3)),
+    ),
+    Transaction(
+      id: 't2',
+      title: 'Nubulizador G-tech',
+      value: 210.00,
+      date: DateTime.now().subtract(Duration(days: 4)),
+    ),
+    Transaction(
+      id: 't3',
+      title: 'Pagamento 3',
+      value: 210.00,
+      date: DateTime.now().subtract(Duration(days: 3)),
+    ),
   ];
+
+  List<Transaction> get _transactionsWeek {
+    return _transaction.where((element) {
+      return element.date.isAfter(DateTime.now().subtract(Duration(days: 7)));
+    }).toList();
+  }
 
   _openTransactionFormModal(BuildContext context) {
     showModalBottomSheet(
@@ -67,10 +86,7 @@ class _HomePageState extends State<HomePage> {
           children: <Widget>[
             Container(
               width: double.infinity,
-              child: Card(
-                child: Text('Grafico'),
-                elevation: 5,
-              ),
+              child: Chart(_transactionsWeek),
             ),
             TransactionList(_transaction),
           ],
