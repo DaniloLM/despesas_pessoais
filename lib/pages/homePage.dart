@@ -27,7 +27,7 @@ class _HomePageState extends State<HomePage> {
     Transaction(
       id: 't2',
       title: 'Nubulizador G-tech',
-      value: 210.00,
+      value: 210123.00,
       date: DateTime.now().subtract(Duration(days: 4)),
     ),
     Transaction(
