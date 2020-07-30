@@ -11,32 +11,32 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  final List<Transaction> _transaction = [
-    Transaction(
-      id: 't0',
-      title: 'Pagamento 0',
-      value: 19.99,
-      date: DateTime.now().subtract(Duration(days: 8)),
-    ),
-    Transaction(
-      id: 't1',
-      title: 'Fralda P 20 unidades',
-      value: 19.99,
-      date: DateTime.now().subtract(Duration(days: 3)),
-    ),
-    Transaction(
-      id: 't2',
-      title: 'Nubulizador G-tech',
-      value: 210123.00,
-      date: DateTime.now().subtract(Duration(days: 4)),
-    ),
-    Transaction(
-      id: 't3',
-      title: 'Pagamento 3',
-      value: 210.00,
-      date: DateTime.now().subtract(Duration(days: 3)),
-    ),
-  ];
+  final List<Transaction> _transaction = [];
+
+  // Transaction(
+  //   id: 't0',
+  //   title: 'Pagamento 0',
+  //   value: 19.99,
+  //   date: DateTime.now().subtract(Duration(days: 8)),
+  // ),
+  // Transaction(
+  //   id: 't1',
+  //   title: 'Fralda P 20 unidades',
+  //   value: 19.99,
+  //   date: DateTime.now().subtract(Duration(days: 3)),
+  // ),
+  // Transaction(
+  //   id: 't2',
+  //   title: 'Nubulizador G-tech',
+  //   value: 210123.00,
+  //   date: DateTime.now().subtract(Duration(days: 4)),
+  // ),
+  // Transaction(
+  //   id: 't3',
+  //   title: 'Pagamento 3',
+  //   value: 210.00,
+  //   date: DateTime.now().subtract(Duration(days: 3)),
+  // ),
 
   List<Transaction> get _transactionsWeek {
     return _transaction.where((element) {
