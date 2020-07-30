@@ -53,12 +53,12 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  _addTransaction(String title, double value) {
+  _addTransaction(String title, double value, DateTime dateTime) {
     final newTransaction = Transaction(
       id: Random().nextDouble().toString(),
       title: title,
       value: value,
-      date: DateTime.now(),
+      date: dateTime,
     );
 
     setState(() {
@@ -66,6 +66,12 @@ class _HomePageState extends State<HomePage> {
     });
 
     Navigator.of(context).pop();
+  }
+
+  _removeTransaction(String id) {
+    setState(() {
+      _transaction.removeWhere((element) => element.id == id);
+    });
   }
 
   @override
@@ -88,7 +94,7 @@ class _HomePageState extends State<HomePage> {
               width: double.infinity,
               child: Chart(_transactionsWeek),
             ),
-            TransactionList(_transaction),
+            TransactionList(_transaction, _removeTransaction),
           ],
         ),
       ),
